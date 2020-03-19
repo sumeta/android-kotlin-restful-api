@@ -10,8 +10,6 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    private val client = OkHttpClient()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,25 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         println("start app")
 
-        run("https://api.github.com/users/sumeta/repos")
-
         val btnHttp:Button = findViewById(R.id.btnOKHttp)
 
         intent = Intent(this, OKHttpActivity::class.java)
 
         btnHttp.setOnClickListener {startActivity(intent)}
 
-
     }
 
-    fun run(url: String) {
-        val request = Request.Builder()
-            .url(url)
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) { println("Error!! " +e.message)}
-            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
-        })
-    }
 }
