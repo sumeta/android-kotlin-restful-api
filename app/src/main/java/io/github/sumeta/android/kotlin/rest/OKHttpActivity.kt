@@ -29,7 +29,9 @@ class OKHttpActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) { println("Error!! " +e.message)}
-            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+            override fun onResponse(call: Call, response: Response) {
+                println(response.body()?.string())
+            }
         })
     }
 

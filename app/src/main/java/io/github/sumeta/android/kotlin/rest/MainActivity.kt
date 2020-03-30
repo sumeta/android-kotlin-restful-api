@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.*
-import java.io.IOException
+import io.github.sumeta.android.kotlin.rest.retrofit.Retrofit2Activity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +18,13 @@ class MainActivity : AppCompatActivity() {
         println("start app")
 
         val btnHttp:Button = findViewById(R.id.btnOKHttp)
-
-        intent = Intent(this, OKHttpActivity::class.java)
+        val btnFavorites:Button = findViewById(R.id.btnFavorites)
+        var intent = Intent(this, OKHttpActivity::class.java)
+        var intentFavorites = Intent(this, Retrofit2Activity::class.java)
 
         btnHttp.setOnClickListener {startActivity(intent)}
+
+        btnFavorites.setOnClickListener {startActivity(intentFavorites)}
 
     }
 
